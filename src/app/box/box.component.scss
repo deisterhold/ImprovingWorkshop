@@ -1,0 +1,29 @@
+:host {
+    display: inline-block;
+    border: 1.5px solid darkgreen;
+
+    &.red {
+        background-color: red;
+    }
+    
+    &.lightgreen {
+        background-color: lightgreen;
+    }
+    
+    &.darkgreen {
+        background-color: darkgreen;
+    }
+    
+    &.yellow {
+        background-color: yellow;
+    }
+    
+    &.blue {
+        background-color: blue;
+    }
+}
+
+div {
+    width: 20px;
+    height: 20px;
+}
