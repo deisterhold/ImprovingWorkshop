@@ -7,6 +7,8 @@ import { BoxComponent } from './box/box.component';
 import { GridComponent } from './grid/grid.component';
 import { RowComponent } from './row/row.component';
 
+import { AccountsModule } from './accounts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +19,7 @@ import { RowComponent } from './row/row.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    AccountsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
