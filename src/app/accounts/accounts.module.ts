@@ -29,6 +29,9 @@ import { AccountsRoutingModule } from './accounts-routing.module';
   exports: [
     AccountEditorComponent,
     AccountListComponent,
+  ],
+  providers: [
+    AccountGuard,
   ]
 })
 export class AccountsModule { }
