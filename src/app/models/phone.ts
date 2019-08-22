@@ -1,7 +1,7 @@
 export class Phone {
     public number: string;
 
-    constructor(num: string, public type: PhoneType) {
+    constructor(num: string, public type: string) {
         this.number = num;
     }
 }

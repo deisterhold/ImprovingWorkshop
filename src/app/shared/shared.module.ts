@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 // Components
 import {
+  DropdownComponent,
   PhoneManagerComponent
 } from './components';
 
 @NgModule({
   declarations: [
+    DropdownComponent,
     PhoneManagerComponent,
   ],
   imports: [
@@ -16,6 +18,7 @@ import {
     FormsModule,
   ],
   exports: [
+    DropdownComponent,
     PhoneManagerComponent,
   ]
 })

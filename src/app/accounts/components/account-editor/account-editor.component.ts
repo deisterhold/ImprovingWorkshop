@@ -19,9 +19,9 @@ export class AccountEditorComponent implements OnInit {
 
   constructor() {
     this.account.phoneNumbers = [
-      new Phone('281-555-1234', PhoneType.Home),
-      new Phone('832-555-1234', PhoneType.Mobile),
-      new Phone('713-555-1234', PhoneType.Office),
+      new Phone('281-555-1234', PhoneType[PhoneType.Home]),
+      new Phone('832-555-1234', PhoneType[PhoneType.Mobile]),
+      new Phone('713-555-1234', PhoneType[PhoneType.Office]),
     ];
   }
 

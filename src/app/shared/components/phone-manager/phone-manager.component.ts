@@ -10,8 +10,8 @@ import { Phone, PhoneType } from '../../../models';
 })
 export class PhoneManagerComponent implements OnInit {
   public readonly PhoneType = PhoneType;
-  public readonly PhoneTypes = Object.keys(PhoneType).filter(i => !isNaN(parseInt(i, 10)));
-  public selectedPhoneType = PhoneType.Home;
+  public readonly PhoneTypes = Object.keys(PhoneType).filter(i => isNaN(parseInt(i, 10)));
+  public selectedPhoneType = this.PhoneTypes[PhoneType.Home];
   private phoneNumbers: Phone[] = [];
 
   @Output()
@@ -32,7 +32,7 @@ export class PhoneManagerComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addPhone(phone: string, type: PhoneType) {
+  public addPhone(phone: string, type: string) {
     const oldPhones = this.phones.slice();
     oldPhones.push(new Phone(phone, type));
 

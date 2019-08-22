@@ -1,0 +1,9 @@
+<div class="input-group-prepend">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">{{model}}</button>
+    <div class="dropdown-menu">
+        <button class="dropdown-item" (click)="model = option" *ngFor="let option of options">
+            {{option}}
+        </button>
+    </div>
+</div>
