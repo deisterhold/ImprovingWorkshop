@@ -10,7 +10,7 @@ import {
   RowComponent,
 } from './components';
 
-import { AccountsModule } from './accounts';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { AccountsModule } from './accounts';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AccountsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

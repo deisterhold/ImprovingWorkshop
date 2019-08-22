@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 // Models
 import { Account, Phone, PhoneType, Department } from '../../../models';
 
+// Services
+import { AccountService } from '../../../services';
+
 @Component({
   selector: 'app-account-editor',
   templateUrl: './account-editor.component.html',
@@ -17,7 +20,7 @@ export class AccountEditorComponent implements OnInit {
     new Department(4, 'Marketing'),
   ];
 
-  constructor() {
+  constructor(private readonly accountRepo: AccountService) {
     this.account.phoneNumbers = [
       new Phone('281-555-1234', PhoneType[PhoneType.Home]),
       new Phone('832-555-1234', PhoneType[PhoneType.Mobile]),
@@ -26,6 +29,7 @@ export class AccountEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.accountRepo.getAccount(1).subscribe((a) => this.account = a);
   }
 
 }
