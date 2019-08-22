@@ -7,4 +7,11 @@ export class Account {
     public isEmployee: boolean;
     public departmentId: number;
     public phoneNumbers: Phone[];
+
+    constructor() {
+        this.name = null;
+        this.email = null;
+        this.isEmployee = false;
+        this.phoneNumbers = [];
+    }
 }

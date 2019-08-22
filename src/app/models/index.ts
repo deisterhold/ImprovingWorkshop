@@ -1,2 +1,3 @@
 export { Account } from './account';
-export { Phone } from './phone';
+export { Department } from './department';
+export { Phone, PhoneType } from './phone';

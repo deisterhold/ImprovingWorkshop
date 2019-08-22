@@ -17,22 +17,22 @@
             <label for="account_email">
               Email
             </label>
-            <input type="email" id="account_email" class="form-control" />
+            <input type="email" id="account_email" [(ngModel)]="account.email" class="form-control" />
           </div>
           <br />
           <div class="form-group">
             <label for="account_isEmployee">
-              <input type="checkbox" id="account_isEmployee" /> Employee
+              <input type="checkbox" id="account_isEmployee" [(ngModel)]="account.isEmployee" /> Employee
             </label>
           </div>
           <div class="form-group">
             <label for="account_departmentId">
               Department
             </label>
-            <select id="account_departmentId" class="form-control">
-              <option></option>
-              <option>
-                DEPARTMENT_NAME_HERE
+            <select id="account_departmentId" [(ngModel)]="account.departmentId" class="form-control">
+              <option [ngValue]="null"></option>
+              <option *ngFor="let department of departments" [value]="department.id">
+                {{department.name}}
               </option>
             </select>
           </div>
@@ -43,10 +43,10 @@
         <li class="list-group-item bg-light">
           Phone numbers
         </li>
-        <li class="list-group-item">
-          PHONE_NUMBER_HERE
+        <li class="list-group-item" *ngFor="let phone of account.phoneNumbers">
+          {{phone.number}}
           <span class="badge badge-primary float-right">
-            PHONE_TYPE_HERE
+            {{PhoneType[phone.type] | titlecase}}
           </span>
         </li>
         <li class="list-group-item">
@@ -73,6 +73,7 @@
       </button>
     </div>
     <div class="col-md-4">
+      <code>{{account | json}}</code>
     </div>
   </div>
 </div>
