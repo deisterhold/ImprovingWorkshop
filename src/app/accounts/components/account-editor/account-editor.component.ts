@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Models
-import { Account, Phone } from '../../../domain';
+import { Account, Phone } from '../../../models';
 
 @Component({
   selector: 'app-account-editor',
