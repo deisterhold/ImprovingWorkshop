@@ -32,10 +32,11 @@ export class PhoneManagerComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addPhone(phone: string, type: string) {
+  public addPhone(phone: HTMLInputElement, type: string) {
     const oldPhones = this.phones.slice();
-    oldPhones.push(new Phone(phone, type));
+    oldPhones.push(new Phone(phone.value, type));
 
     this.phones = oldPhones;
+    phone.value = '';
   }
 }

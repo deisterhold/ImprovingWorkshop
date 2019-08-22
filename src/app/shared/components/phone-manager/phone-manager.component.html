@@ -13,7 +13,7 @@
             <app-dropdown [(model)]="selectedPhoneType" [options]="PhoneTypes"></app-dropdown>
             <input #phone type="text" class="form-control" placeholder="Add phone...">
             <div class="input-group-append">
-              <button class="btn btn-info" type="button" (click)="addPhone(phone.value, selectedPhoneType)">Add</button>
+              <button class="btn btn-info" type="button" (click)="addPhone(phone, selectedPhoneType)">Add</button>
             </div>
           </div>
         </li>

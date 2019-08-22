@@ -10,7 +10,9 @@ import { AccountGuard } from './guards';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: AccountListComponent },
-  { path: ':id', component: AccountEditorComponent, canActivate: [AccountGuard] }
+  { path: 'new', component: AccountEditorComponent },
+  { path: ':id', component: AccountEditorComponent, canActivate: [AccountGuard] },
+  { pathMatch: '**', redirectTo: '' }
 ];
 
 @NgModule({

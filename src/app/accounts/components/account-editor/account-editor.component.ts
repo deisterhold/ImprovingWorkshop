@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { filter, switchMap, map } from 'rxjs/operators';
+
 // Models
-import { Account, Phone, PhoneType, Department } from '../../../models';
+import { Account, Department } from '../../../models';
 
 // Services
 import { AccountService } from '../../../services';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-account-editor',
@@ -12,6 +16,7 @@ import { AccountService } from '../../../services';
   styleUrls: ['./account-editor.component.scss']
 })
 export class AccountEditorComponent implements OnInit {
+  public readonly isEdit: boolean;
   public account = new Account();
   public departments: Department[] = [
     new Department(1, 'IT'),
@@ -19,17 +24,31 @@ export class AccountEditorComponent implements OnInit {
     new Department(3, 'HR'),
     new Department(4, 'Marketing'),
   ];
+  public isSaving: Subscription;
 
-  constructor(private readonly accountRepo: AccountService) {
-    this.account.phoneNumbers = [
-      new Phone('281-555-1234', PhoneType[PhoneType.Home]),
-      new Phone('832-555-1234', PhoneType[PhoneType.Mobile]),
-      new Phone('713-555-1234', PhoneType[PhoneType.Office]),
-    ];
+  constructor(private readonly accountRepo: AccountService, private readonly router: Router, private readonly route: ActivatedRoute) {
+    this.route.paramMap.pipe(
+      filter(p => p.has('id')),
+      map((p) => parseInt(p.get('id'), 10)),
+      switchMap((id) => accountRepo.getAccount(id)),
+    ).subscribe((a) => this.account = a);
   }
 
   ngOnInit() {
-    this.accountRepo.getAccount(1).subscribe((a) => this.account = a);
   }
 
+  public save() {
+    if (this.account.id) {
+      this.isSaving = this.accountRepo.updateAccount(this.account.id, this.account).subscribe((a) => {
+        this.account = a;
+        this.isSaving = null;
+      });
+    } else {
+      this.isSaving = this.accountRepo.createAccount(this.account).subscribe((a) => {
+        this.account = a;
+        this.isSaving = null;
+        this.router.navigateByUrl('' + a.id);
+      });
+    }
+  }
 }

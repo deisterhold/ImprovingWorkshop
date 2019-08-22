@@ -24,7 +24,13 @@
                     <td>{{account.email}}</td>
                     <td>{{account.isEmployee ? 'Yes': 'No'}}</td>
                     <td class="text-right">
-                        <button class="btn btn-sm btn-danger" (click)="delete(account.id)">X</button>
+                        <button class="btn btn-sm btn-danger" (click)="delete(account.id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                        &nbsp;
+                        <a class="btn btn-sm btn-success" routerLink="{{account.id}}">
+                            <i class="material-icons">info</i>
+                        </a>
                     </td>
                 </tr>
             </tbody>
