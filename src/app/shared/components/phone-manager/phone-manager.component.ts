@@ -10,6 +10,7 @@ import { Phone, PhoneType } from '../../../models';
 })
 export class PhoneManagerComponent implements OnInit {
   public readonly PhoneType = PhoneType;
+  public readonly PhoneTypes = Object.keys(PhoneType).filter(i => !isNaN(parseInt(i, 10)));
   private phoneNumbers: Phone[] = [];
 
   @Output()
