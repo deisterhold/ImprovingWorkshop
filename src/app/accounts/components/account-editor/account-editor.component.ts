@@ -9,7 +9,6 @@ import { Account, Phone, PhoneType, Department } from '../../../models';
   styleUrls: ['./account-editor.component.scss']
 })
 export class AccountEditorComponent implements OnInit {
-  public readonly PhoneType = PhoneType;
   public account = new Account();
   public departments: Department[] = [
     new Department(1, 'IT'),
